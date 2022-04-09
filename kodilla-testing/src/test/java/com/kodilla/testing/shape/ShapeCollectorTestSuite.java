@@ -72,7 +72,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(new Triangle(3, 4));
 
         //When
-        Shape expected = shapeCollector.showFigures();
+        String expected = shapeCollector.showFigures();
         String retrievedShape = "Triangle";
 
         //Then

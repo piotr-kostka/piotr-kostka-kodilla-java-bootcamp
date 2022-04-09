@@ -21,7 +21,7 @@ public class ShapeCollector {
     public Shape getFigure(int n) {
         return null;
     }
-    public Shape showFigures() {
+    public String showFigures() {
         return null;
     }
 }
