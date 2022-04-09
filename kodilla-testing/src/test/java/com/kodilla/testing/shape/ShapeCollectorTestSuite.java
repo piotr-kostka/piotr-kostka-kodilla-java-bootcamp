@@ -3,6 +3,9 @@ package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @DisplayName("TDD: ShapeCollector Test Suite")
 public class ShapeCollectorTestSuite {
 
@@ -24,58 +27,67 @@ public class ShapeCollectorTestSuite {
         System.out.println("Przeprowadzanie testu nr #" + testCounter);
     }
 
-    @Test
-    void testAddFigure(){
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
-        shapeCollector.addFigure(new Triangle(3, 4));
+    @Nested
+    @DisplayName("Add and remove tests")
+    class AddRemoveTests {
+        @Test
+        void testAddFigure () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            List<Shape> givenShape = shapeCollector.addFigure(new Triangle(3, 4));
 
-        //When
-        Triangle retrievedShape = new Triangle(3, 4);
+            //When
+            List<Shape> retrievedShape = new ArrayList<Shape>();
+            retrievedShape.add(new Triangle(3, 4));
 
-        //Then
-        Assertions.assertEquals(shapes.get(0), retrievedShape);
+            //Then
+            Assertions.assertEquals(givenShape, retrievedShape);
+        }
+
+        @Test
+        void testRemoveFigure () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            shapeCollector.addFigure(new Triangle(3, 4));
+
+            //When
+            boolean result = shapeCollector.removeFigure(new Triangle(3, 4));
+
+            //Then
+            Assertions.assertTrue(result);
+        }
     }
 
-    @Test
-    void testRemoveFigure(){
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
-        shapeCollector.addFigure(new Triangle(3, 4));
+    @Nested
+    @DisplayName("Get and show tests")
+    class GetShowTests {
+        @Test
+        void testGetFigure () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            Triangle triangle = new Triangle(3, 4);
+            shapeCollector.addFigure(new Triangle(3, 4));
 
-        //When
-        boolean result = shapeCollector.removeFigure(new Triangle(3, 4));
+            //When
+            Shape retrievedShape;
+            retrievedShape = shapeCollector.getFigure(0);
 
-        //Then
-        Assertions.assertTrue(result);
-        Assertions.assertEquals(0, shapes.size());
-    }
+            //Then
+            Assertions.assertEquals(triangle, retrievedShape);
+        }
 
-    @Test
-    void testGetFigure(){
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
-        Triangle triangle = new Triangle(3, 4);
-        shapeCollector.addFigure(new Triangle(3, 4));
+        @Test
+        void testShowFigures () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            shapeCollector.addFigure(new Triangle(3, 4));
 
-        //When
-        Triangle retrievedShape = new Triangle(3, 4);
+            //When
+            String expected = shapeCollector.showFigures();
+            String retrievedShape = "Triangle";
 
-        //Then
-        Assertions.assertEquals(triangle, retrievedShape);
-    }
-
-    @Test
-    void testShowFigures(){
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
-        shapeCollector.addFigure(new Triangle(3, 4));
-
-        //When
-        String expected = shapeCollector.showFigures();
-        String retrievedShape = "Triangle";
-
-        //Then
-        Assertions.assertEquals(expected, retrievedShape);
+            //Then
+            Assertions.assertEquals(expected, retrievedShape);
+        }
     }
 }
