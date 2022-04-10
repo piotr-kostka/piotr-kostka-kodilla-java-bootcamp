@@ -27,6 +27,15 @@ public class ShapeCollector {
         return null;
     }
     public String showFigures() {
-        return shapes.toString();
+        String temporary = "";
+
+        for (Shape shape : shapes) {
+            if (shapes.indexOf(shape) < shapes.size()-1) {
+                temporary += shape.getShapeName() + ", ";
+            } else {
+               temporary += shape.getShapeName();
+            }
+        }
+        return temporary;
     }
 }
