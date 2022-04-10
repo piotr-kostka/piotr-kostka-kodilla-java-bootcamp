@@ -4,6 +4,7 @@ package com.kodilla.testing.shape;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @DisplayName("TDD: ShapeCollector Test Suite")
@@ -33,7 +34,7 @@ public class ShapeCollectorTestSuite {
         @Test
         void testAddFigure () {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            ShapeCollector shapeCollector = new ShapeCollector();
             List<Shape> givenShape = shapeCollector.addFigure(new Triangle(3, 4));
 
             //When
@@ -47,7 +48,7 @@ public class ShapeCollectorTestSuite {
         @Test
         void testRemoveFigure () {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            ShapeCollector shapeCollector = new ShapeCollector();
             shapeCollector.addFigure(new Triangle(3, 4));
 
             //When
@@ -64,7 +65,7 @@ public class ShapeCollectorTestSuite {
         @Test
         void testGetFigure () {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            ShapeCollector shapeCollector = new ShapeCollector();
             Triangle triangle = new Triangle(3, 4);
             shapeCollector.addFigure(new Triangle(3, 4));
 
@@ -79,12 +80,14 @@ public class ShapeCollectorTestSuite {
         @Test
         void testShowFigures () {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector(new Triangle(3, 4));
+            ShapeCollector shapeCollector = new ShapeCollector();
             shapeCollector.addFigure(new Triangle(3, 4));
 
             //When
             String expected = shapeCollector.showFigures();
-            String retrievedShape = "Triangle";
+
+            List<Shape> intLIst = Arrays.asList(new Triangle(3, 4));
+            String retrievedShape = intLIst.toString();
 
             //Then
             Assertions.assertEquals(expected, retrievedShape);
