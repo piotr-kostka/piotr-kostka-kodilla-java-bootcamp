@@ -11,7 +11,7 @@ class Triangle implements Shape{
     }
 
     public String getShapeName() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + "(" + this.base + "," + this.height + ")";
     }
 
     public double getField() {

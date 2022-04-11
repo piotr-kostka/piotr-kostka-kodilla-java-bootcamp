@@ -9,7 +9,7 @@ class Square implements Shape{
     }
 
     public String getShapeName() {
-        return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName() + "(" + this.length + ")";
     }
 
     public double getField() {

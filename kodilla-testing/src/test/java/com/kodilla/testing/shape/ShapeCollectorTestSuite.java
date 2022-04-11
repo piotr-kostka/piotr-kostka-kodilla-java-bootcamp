@@ -87,14 +87,16 @@ public class ShapeCollectorTestSuite {
             shapeCollector.addFigure(new Triangle(3, 4));
             shapeCollector.addFigure(new Circle(5));
             shapeCollector.addFigure(new Square(4));
+            shapeCollector.addFigure(new Circle(10));
 
             String retrievedShape = shapeCollector.showFigures();
-            String expected = "Triangle, Circle, Square";
+            String expected = "Triangle(3.0,4.0), Circle(5.0), Square(4.0), Circle(10.0)";
 
-            Boolean check = retrievedShape.equals(expected);
+            Boolean checkIfEquals = retrievedShape.equals(expected);
 
             //Then
-            Assertions.assertTrue(check);
+            Assertions.assertTrue(checkIfEquals);
+            Assertions.assertEquals(retrievedShape,expected);
         }
     }
 }
