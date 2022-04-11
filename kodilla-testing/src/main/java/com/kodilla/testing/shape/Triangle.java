@@ -11,12 +11,16 @@ class Triangle implements Shape{
     }
 
     public String getShapeName() {
-        return this.getClass().getSimpleName() + "(" + this.base + "," + this.height + ")";
+        return this.getClass().getSimpleName();
     }
 
     public double getField() {
         double field = base*height/2;
         return field;
+    }
+
+    public String toString() {
+        return getShapeName() + "(" + this.base + "," + this.height + ")";
     }
 
     @Override

@@ -9,12 +9,16 @@ class Square implements Shape{
     }
 
     public String getShapeName() {
-        return this.getClass().getSimpleName() + "(" + this.length + ")";
+        return this.getClass().getSimpleName();
     }
 
     public double getField() {
         double field = Math.pow(length,2);
         return field;
+    }
+
+    public String toString() {
+        return getShapeName() + "(" + this.length + ")";
     }
 
     @Override

@@ -9,12 +9,16 @@ class Circle implements Shape{
     }
 
     public String getShapeName() {
-        return this.getClass().getSimpleName() + "(" + this.radius + ")";
+        return this.getClass().getSimpleName();
     }
 
     public double getField() {
         double field = Math.PI * Math.pow(radius,2);
         return field;
+    }
+
+    public String toString() {
+        return getShapeName() + "(" + this.radius + ")";
     }
 
     @Override

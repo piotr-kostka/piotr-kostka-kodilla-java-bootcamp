@@ -29,11 +29,11 @@ public class ShapeCollector {
     public String showFigures() {
         String temporary = "";
 
-        for (Shape temp : shapes) {
-            if (shapes.indexOf(temp) < shapes.size()-1) {
-                temporary += temp.getShapeName() + ", ";
+        for (Shape shape : shapes) {
+            if (shapes.indexOf(shape) < shapes.size()-1) {
+                temporary += shape.toString() + ", ";
             } else {
-               temporary += temp.getShapeName();
+               temporary += shape.toString();
             }
         }
         return temporary;
