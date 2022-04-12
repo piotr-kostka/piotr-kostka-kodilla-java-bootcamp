@@ -110,7 +110,7 @@ class BookDirectoryTestSuite {
         // When
         List<Book> listOf0Books = bookLibrary.listBooksInHandsOf(user);
 
-        // Then
+            // Then
         assertEquals(0, listOf0Books.size());
         }
 
