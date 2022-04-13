@@ -9,26 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class StatisticsProcessorTestSuite {
 
-    @Mock
-    Statistics statisticsMock;
-
-    List<String> generateListOfNUsers (int usersQuantity) {
-        List<String> resultList = new ArrayList<>();
-        for (int n = 1; n <= usersQuantity; n++) {
-            String user = new String("User " + n);
-            resultList.add(user);
-        }
-        return resultList;
-    }
-
     List<String> usersNames = generateListOfNUsers(20);
     int postQuantity = 10;
     int commentQuantity = 50;
+
+    Statistics statisticsMock = mock(Statistics.class);
+    StatisticsProcessor testee = new StatisticsProcessor(statisticsMock);
 
     @Test
     void testCalculateAdvStatistics0Posts() {
@@ -38,13 +30,13 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.usersNames()).thenReturn(usersNames);
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
 
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "20 0 50 0.0 2.5 0.0";
+
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
     }
 
     @Test
@@ -56,13 +48,11 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
-
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "20 1000 50 50.0 2.5 0.05";
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
     }
 
     @Test
@@ -74,13 +64,11 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
-
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "20 10 0 0.5 0.0 0.0";
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
     }
 
     @Test
@@ -92,13 +80,11 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
-
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "20 10 5 0.5 0.25 0.5";
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
     }
 
     @Test
@@ -108,13 +94,11 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
-
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "20 10 50 0.5 2.5 5.0";
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
     }
 
     @Test
@@ -126,13 +110,11 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
-
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "0 10 50 0.0 0.0 5.0";
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
     }
 
     @Test
@@ -144,12 +126,19 @@ public class StatisticsProcessorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(postQuantity);
         when(statisticsMock.commentsCount()).thenReturn(commentQuantity);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(statisticsMock);
-
         //When
-        String advStats = statisticsProcessor.calculateAdvStatistics(statisticsMock);
+        String result = testee.calculateAdvStatistics(statisticsMock);
         String expected = "100 10 50 0.1 0.5 5.0";
         //Then
-        assertEquals(advStats,expected);
+        assertEquals(result,expected);
+    }
+
+    List<String> generateListOfNUsers (int usersQuantity) {
+        List<String> resultList = new ArrayList<>();
+        for (int n = 1; n <= usersQuantity; n++) {
+            String user = new String("User " + n);
+            resultList.add(user);
+        }
+        return resultList;
     }
 }
