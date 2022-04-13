@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BookLibrary {
-    private LibraryDatabase libraryDatabase;
+    LibraryDatabase libraryDatabase;
 
     public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
