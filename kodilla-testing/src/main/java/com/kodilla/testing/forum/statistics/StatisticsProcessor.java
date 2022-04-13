@@ -44,7 +44,7 @@ public class StatisticsProcessor {
     }
 
     public String calculateAdvStatistics(Statistics statistics) {
-        return getUsersQuantity() + " " + getCommentsQuantity() + " " + getPostsQuantity() + " " +
+        return getUsersQuantity() + " " + getPostsQuantity() + " " + getCommentsQuantity() + " " +
                 calculateAvgPostsPerUser() + " " + calculateAvgCommentsPerUser() + " " + calculateAvgCommentsPerPost();
     }
 }
