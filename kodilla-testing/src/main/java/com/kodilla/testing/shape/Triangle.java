@@ -19,6 +19,7 @@ class Triangle implements Shape{
         return field;
     }
 
+    @Override
     public String toString() {
         return getShapeName() + "(" + this.base + "," + this.height + ")";
     }
