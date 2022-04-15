@@ -4,30 +4,35 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class World {
+public final class World {
 
-    Europe europe = new Europe();
-    Asia asia = new Asia();
-    Africa africa = new Africa();
+    private final Continent continent;
 
-    private final List<Country> europeList = europe.getEuropeList();
-    private final List<Country> asiaList = asia.getAsiaList();
-    private final List<Country> africaList = africa.getAfricaList();
+    public World(Continent continent) {
+        this.continent = continent;
+    }
 
-    private final List<Country> worldList = new ArrayList<>();
+    private final List<World> worldList = new ArrayList<>();
 
-    public List<Country> getWorldList() {
-        worldList.addAll(europeList);
-        worldList.addAll(asiaList);
-        worldList.addAll(africaList);
+    public List<World> getWorldList() {
+        worldList.add(new World(new Continent("Europe", new Country("Poland", new BigDecimal("37000000")))));
+        worldList.add(new World(new Continent("Asia" , new Country("China", new BigDecimal("2000000000")))));
 
         return worldList;
     }
 
+    public Continent getContinent() {
+        return continent;
+    }
+
+    public BigDecimal getQuantity() {
+        return continent.getContinentPeopleQuantity();
+    }
+
     public BigDecimal getPeopleQuantity() {
         return worldList.stream()
-                .flatMap(worldList -> getWorldList().stream())
-                .map(Country::getPeopleQuantity)
+                .flatMap(world -> world.getWorldList().stream())
+                .map(World::getQuantity)
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
     }
 }
