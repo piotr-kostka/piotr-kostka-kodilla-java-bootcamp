@@ -4,25 +4,25 @@ import java.math.BigDecimal;
 
 public final class Country {
 
-    private final String countryName;
-    private final BigDecimal quantityOfPeople;
+    private final String name;
+    private final BigDecimal peopleQuantity;
 
     public Country(final String countryName, final BigDecimal peopleQuantity) {
-        this.countryName = countryName;
-        this.quantityOfPeople = peopleQuantity;
+        this.name = countryName;
+        this.peopleQuantity = peopleQuantity;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getName() {
+        return name;
     }
 
-    public BigDecimal getQuantityOfPeople() {
-        return quantityOfPeople;
+    public BigDecimal getPeopleQuantity() {
+        return peopleQuantity;
     }
 
     @Override
     public String toString() {
-        return "Country: " + countryName + ", people quantity: " + quantityOfPeople;
+        return "Country: " + name + ", people quantity: " + peopleQuantity;
     }
 
     @Override
@@ -32,12 +32,12 @@ public final class Country {
 
         Country country = (Country) o;
 
-        return countryName.equals(country.countryName);
+        return name.equals(country.name);
     }
 
     @Override
     public int hashCode() {
-        return countryName.hashCode();
+        return name.hashCode();
     }
 }
 
