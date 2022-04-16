@@ -1,32 +1,28 @@
 package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public final class Country {
 
     private final String countryName;
-    private final BigDecimal peopleQuantity;
-//    private final List<Country> countries = new ArrayList<>();
+    private final BigDecimal quantityOfPeople;
 
     public Country(final String countryName, final BigDecimal peopleQuantity) {
         this.countryName = countryName;
-        this.peopleQuantity = peopleQuantity;
+        this.quantityOfPeople = peopleQuantity;
     }
 
     public String getCountryName() {
         return countryName;
     }
 
-    public BigDecimal getQuantityPeople() {
-        return peopleQuantity;
+    public BigDecimal getQuantityOfPeople() {
+        return quantityOfPeople;
     }
 
     @Override
     public String toString() {
-        return "Country: " + countryName + ", people quantity: " + peopleQuantity;
+        return "Country: " + countryName + ", people quantity: " + quantityOfPeople;
     }
 
     @Override

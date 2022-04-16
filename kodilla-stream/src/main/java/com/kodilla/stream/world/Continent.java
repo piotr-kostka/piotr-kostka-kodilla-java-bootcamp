@@ -7,35 +7,13 @@ import java.util.stream.Collectors;
 
 public final class Continent {
 
-    private final String continentName;
-    private final Country country;
+    private final List<Country> countries = new ArrayList<>();
 
-    private final List<Continent> continents = new ArrayList<>();
-
-    public Continent(final String continentName, final Country country) {
-        this.continentName = continentName;
-        this.country = country;
+    public void addCountry(Country country) {
+        countries.add(country);
     }
 
-    public String getContinentName() {
-        return continentName;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public List<Continent> getContinents() {
-        return continents;
-    }
-
-    public BigDecimal getCountriesPeopleQuantity() {
-        return country.getQuantityPeople();
-    }
-
-    public BigDecimal getContinentPeopleQuantity() {
-        return continents.stream()
-                .map(Continent::getCountriesPeopleQuantity)
-                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+    public List<Country> getCountries() {
+        return countries;
     }
 }
