@@ -37,6 +37,24 @@ class BoardTestSuite {
         assertEquals(10 , averageTaskTimeInProgress);
     }
 
+    @Test
+    void testAddTaskListAverageWorkingOnTaskWithOrElse() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        double averageTaskTimeInProgress = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .map(Task::getCreated)
+                .mapToDouble(s -> ChronoUnit.DAYS.between(s, LocalDate.now()))
+                .average().orElse(0.00);
+
+        //Then
+        assertEquals(10 , averageTaskTimeInProgress);
+    }
+
     private Board prepareTestData() {
         //users
         User user1 = new User("developer1", "John Smith");
