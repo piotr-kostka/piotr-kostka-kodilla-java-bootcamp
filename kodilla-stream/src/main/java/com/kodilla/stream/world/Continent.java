@@ -5,10 +5,10 @@ import java.util.List;
 
 public final class Continent {
 
-    public final String continentName;
+    public final String name;
 
-    public Continent(final String continentName) {
-        this.continentName = continentName;
+    public Continent(final String name) {
+        this.name = name;
     }
 
     private final List<Country> countries = new ArrayList<>();
@@ -24,7 +24,7 @@ public final class Continent {
     @Override
     public String toString() {
         return "Continent{" +
-                "continentName='" + continentName + '\'' +
+                "continentName='" + name + '\'' +
                 ", countries=" + countries +
                 '}';
     }
@@ -36,11 +36,11 @@ public final class Continent {
 
         Continent continent = (Continent) o;
 
-        return continentName.equals(continent.continentName);
+        return name.equals(continent.name);
     }
 
     @Override
     public int hashCode() {
-        return continentName.hashCode();
+        return name.hashCode();
     }
 }
