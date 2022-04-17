@@ -1,6 +1,5 @@
 package com.kodilla.stream.array;
 
-import java.util.Objects;
 import java.util.stream.IntStream;
 
 public interface ArrayOperations {
@@ -10,7 +9,6 @@ public interface ArrayOperations {
             .forEach(number -> System.out.println(numbers[number]));
 
         double average = IntStream.range(0, numbers.length)
-            .filter(Objects::nonNull)
             .mapToDouble(number -> numbers[number])
             .average()
             .orElse(0.00);
