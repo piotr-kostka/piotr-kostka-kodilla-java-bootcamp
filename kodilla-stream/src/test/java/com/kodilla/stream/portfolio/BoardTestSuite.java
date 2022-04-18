@@ -5,9 +5,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.DoubleStream;
 
-import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTestSuite {
@@ -19,37 +17,13 @@ class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double summedTaskTimeInProgress = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(t -> t.getTasks().stream())
-                .map(Task::getCreated)
-                .mapToDouble(s -> ChronoUnit.DAYS.between(s, LocalDate.now()))
-                .sum();
-
-        double countedTaskTimeInProgress = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(t -> t.getTasks().stream())
-                .map(Task::getCreated)
-                .count();
-
-        double averageTaskTimeInProgress = summedTaskTimeInProgress / countedTaskTimeInProgress;
-        //Then
-        assertEquals(10 , averageTaskTimeInProgress);
-    }
-
-    @Test
-    void testAddTaskListAverageWorkingOnTaskWithOrElse() {
-        //Given
-        Board project = prepareTestData();
-        //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
         double averageTaskTimeInProgress = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(t -> t.getTasks().stream())
                 .map(Task::getCreated)
                 .mapToDouble(s -> ChronoUnit.DAYS.between(s, LocalDate.now()))
-                .average().orElse(0.00);
+                .average()
+                .orElse(0.00);
 
         //Then
         assertEquals(10 , averageTaskTimeInProgress);
