@@ -1,7 +1,6 @@
 package com.kodilla.rps;
 
 import static com.kodilla.rps.Moves.*;
-import static com.kodilla.rps.Moves.ROCK;
 
 public class Dependencies {
 
