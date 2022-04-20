@@ -2,7 +2,7 @@ package com.kodilla.rps;
 
 import static com.kodilla.rps.Moves.*;
 
-public class Dependencies {
+public class MoveResolver {
 
     public static boolean playerWin(Moves playerMove, Moves computerMove) {
         if (playerMove == ROCK && (computerMove == SCISSORS || computerMove == LIZARD)) {
@@ -13,11 +13,7 @@ public class Dependencies {
             return true;
         } else if (playerMove == LIZARD && (computerMove == PAPER || computerMove == SPOCK)) {
             return true;
-        } else if (playerMove == SPOCK && (computerMove == SCISSORS || computerMove == ROCK)) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return playerMove == SPOCK && (computerMove == SCISSORS || computerMove == ROCK);
     }
 
      public static boolean computerWin(Moves playerMove, Moves computerMove) {
@@ -29,10 +25,6 @@ public class Dependencies {
             return true;
         } else if (computerMove == LIZARD && (playerMove == PAPER || playerMove == SPOCK)) {
             return true;
-        } else if (computerMove == SPOCK && (playerMove == SCISSORS || playerMove == ROCK)) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return computerMove == SPOCK && (playerMove == SCISSORS || playerMove == ROCK);
     }
 }

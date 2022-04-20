@@ -53,10 +53,10 @@ public class Game {
             }
             if (playerMove == ROCK || playerMove == PAPER || playerMove == SCISSORS || playerMove == LIZARD || playerMove == SPOCK) {
                 computerMove = Settings.getComputerMove();
-                if (Dependencies.playerWin(playerMove, computerMove)) {
+                if (MoveResolver.playerWin(playerMove, computerMove)) {
                     playerScore++;
                     Dialogs.printPlayerRoundWin();
-                } else if (Dependencies.computerWin(playerMove, computerMove)) {
+                } else if (MoveResolver.computerWin(playerMove, computerMove)) {
                     computerScore++;
                     Dialogs.printComputerRoundWin();
                 } else {
