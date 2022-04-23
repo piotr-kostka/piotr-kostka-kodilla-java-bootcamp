@@ -15,10 +15,14 @@ public class SecondChallangeTestSuite {
 
         //when & then
         Assertions.assertAll(
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(0.99, 1.5)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(0.99, 2)),
                 () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2, 1.5)),
-                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(0.9, 1.5)),
-                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1, 1.5)),
-                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1, 2))
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2, 2)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.99, 1.5)),
+                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1, 2)),
+                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.5, 2)),
+                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.99, 2))
         );
     }
 }
