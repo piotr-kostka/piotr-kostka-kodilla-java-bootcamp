@@ -17,4 +17,10 @@ public class Flight {
     public String getArrivalAirport() {
         return arrivalAirport;
     }
+
+    @Override
+    public String toString() {
+        return "Flight exist - departure from: " + departureAirport +
+                ", arrival to: " + arrivalAirport;
+    }
 }

@@ -8,7 +8,8 @@ public class FlightRunner {
         FlightFinder flightFinder = new FlightFinder();
 
         try {
-            flightFinder.findFlight(new Flight("Warsaw", "Moscow"));
+            Flight searchingResult = flightFinder.findFlight(new Flight("Warsaw", "London"));
+            System.out.println(searchingResult);
         } catch (RouteNotFoundException e) {
             System.out.println("Flight not found. Error: " + e);
         } finally {
