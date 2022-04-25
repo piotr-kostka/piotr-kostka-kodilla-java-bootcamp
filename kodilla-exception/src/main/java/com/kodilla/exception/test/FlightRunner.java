@@ -8,10 +8,10 @@ public class FlightRunner {
         FlightFinder flightFinder = new FlightFinder();
 
         try {
-            Flight searchingResult = flightFinder.findFlight(new Flight("Warsaw", "London"));
+            String searchingResult = flightFinder.findFlight(new Flight("Warsaw", "Moscow"));
             System.out.println(searchingResult);
         } catch (RouteNotFoundException e) {
-            System.out.println("Flight not found. Error: " + e);
+            System.out.println(e);
         } finally {
             System.out.println("Finder used at: " + LocalTime.now());
         }
