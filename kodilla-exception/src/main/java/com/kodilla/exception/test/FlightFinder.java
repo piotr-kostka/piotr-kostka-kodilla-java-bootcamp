@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class FlightFinder {
 
-    public Flight findFlight(Flight flight) throws RouteNotFoundException {
+    public Optional findFlight(Flight flight) throws RouteNotFoundException {
         Map<String,Boolean> arrivalAirports = new HashMap<>();
         arrivalAirports.put("Warsaw", true);
         arrivalAirports.put("Berlin", true);
@@ -15,7 +15,7 @@ public class FlightFinder {
         if (!arrivalAirports.containsKey(flight.getArrivalAirport())) {
             throw new RouteNotFoundException(flight + " do not exists!");
         } else if (arrivalAirports.get(flight.getArrivalAirport())) {
-            return Optional.of(flight).get();
+            return Optional.of(flight);
         } else {
             return Optional.empty();
         }
