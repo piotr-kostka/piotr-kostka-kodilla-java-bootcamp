@@ -4,5 +4,5 @@ import java.time.LocalDateTime;
 
 public interface OrdersRepository {
 
-    boolean createOrder(User user, LocalDateTime orderDate);
+    boolean createOrder(User user, ProductOrder productOrder, LocalDateTime orderDate);
 }

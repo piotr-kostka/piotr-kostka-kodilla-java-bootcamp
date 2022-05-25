@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class GamesOrdersRepository implements OrdersRepository{
 
     @Override
-    public boolean createOrder(User user, LocalDateTime orderDate) {
+    public boolean createOrder(User user, ProductOrder productOrder, LocalDateTime orderDate) {
         return true;
     }
 }
