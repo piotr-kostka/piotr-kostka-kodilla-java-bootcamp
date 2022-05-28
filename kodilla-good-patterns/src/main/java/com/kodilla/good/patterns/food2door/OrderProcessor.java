@@ -11,13 +11,13 @@ public class OrderProcessor {
     }
 
     public OrderDto process(final Order order) {
-        boolean isOrdered = orderService.process(order.getUser(), order.getOrderDate(), order.getShop());
+        boolean isOrdered = orderService.process(order.getUser(), order.getOrderDate(), order.getProduct());
 
         if (isOrdered) {
             informationService.inform(order.getUser());
-            return new OrderDto(order.getUser(), order.getShop(), true);
+            return new OrderDto(order.getUser(), order.getProduct(), true);
         } else {
-            return new OrderDto(order.getUser(), order.getShop(), false);
+            return new OrderDto(order.getUser(), order.getProduct(), false);
         }
     }
 }

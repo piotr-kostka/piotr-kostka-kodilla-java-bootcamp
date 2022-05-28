@@ -3,12 +3,12 @@ package com.kodilla.good.patterns.food2door;
 public class OrderDto {
 
     private User user;
-    private Shop shop;
+    private Product product;
     private boolean isOrdered;
 
-    public OrderDto(User user, Shop shop, boolean isOrdered) {
+    public OrderDto(User user, Product product, boolean isOrdered) {
         this.user = user;
-        this.shop = shop;
+        this.product = product;
         this.isOrdered = isOrdered;
     }
 
@@ -16,8 +16,8 @@ public class OrderDto {
         return user;
     }
 
-    public Shop getShop() {
-        return shop;
+    public Product getProduct() {
+        return product;
     }
 
     public boolean isOrdered() {

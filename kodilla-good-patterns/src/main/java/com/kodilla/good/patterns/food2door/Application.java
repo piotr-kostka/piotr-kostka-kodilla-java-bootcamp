@@ -8,5 +8,7 @@ public class Application {
 
         OrderProcessor orderProcessor = new OrderProcessor(new MailService(), new HealthyShop());
         orderProcessor.process(order);
+
+        System.out.println(order);
     }
 }

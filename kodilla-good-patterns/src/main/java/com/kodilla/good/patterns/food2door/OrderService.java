@@ -4,5 +4,5 @@ import java.time.LocalDateTime;
 
 public interface OrderService {
 
-    boolean process(User user, LocalDateTime orderDate, Shop shop);
+    boolean process(User user, LocalDateTime orderDate, Product product);
 }
