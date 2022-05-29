@@ -3,12 +3,12 @@ package com.kodilla.good.patterns.food2door;
 public class Product {
 
     private String name;
-    private int ID;
+    private int id;
     private double price;
 
-    public Product(String name, int ID, double price) {
+    public Product(String name, int id, double price) {
         this.name = name;
-        this.ID = ID;
+        this.id = id;
         this.price = price;
     }
 
@@ -16,8 +16,8 @@ public class Product {
         return name;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public double getPrice() {
@@ -26,7 +26,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + " (ID: " + ID +
+        return name + " (id: " + id +
                 "), price: " + price;
     }
 
@@ -37,7 +37,7 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (ID != product.ID) return false;
+        if (id != product.id) return false;
         if (Double.compare(product.price, price) != 0) return false;
         return name.equals(product.name);
     }
@@ -47,7 +47,7 @@ public class Product {
         int result;
         long temp;
         result = name.hashCode();
-        result = 31 * result + ID;
+        result = 31 * result + id;
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;

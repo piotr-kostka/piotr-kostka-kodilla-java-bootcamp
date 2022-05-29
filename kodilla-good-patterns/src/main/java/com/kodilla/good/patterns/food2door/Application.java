@@ -6,9 +6,7 @@ public class Application {
         OrderRetriever orderRetriever = new OrderRetriever();
         Order order = orderRetriever.retrieve();
 
-        OrderProcessor orderProcessor = new OrderProcessor(new MailService(), new HealthyShop());
+        OrderProcessor orderProcessor = new OrderProcessor(new MailService(), new SuperbCheapShop());
         orderProcessor.process(order);
-
-        System.out.println(order);
     }
 }

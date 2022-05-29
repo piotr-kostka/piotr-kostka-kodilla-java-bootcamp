@@ -11,7 +11,7 @@ public class OrderProcessor {
     }
 
     public OrderDto process(final Order order) {
-        boolean isOrdered = orderService.process(order.getUser(), order.getOrderDate(), order.getProduct());
+        boolean isOrdered = orderService.process(order);
 
         if (isOrdered) {
             informationService.inform(order.getUser());
