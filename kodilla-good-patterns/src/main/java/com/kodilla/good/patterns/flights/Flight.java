@@ -26,7 +26,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight from: " + departure + " to: " + arrival + ", flight number: " + flightNumber;
+        return departure + " - " + arrival + ", flight number: " + flightNumber;
     }
 
     @Override
