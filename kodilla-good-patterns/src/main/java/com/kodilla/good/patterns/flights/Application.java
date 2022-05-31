@@ -8,6 +8,6 @@ public class Application {
         flightSearcher.searchByDeparture("Katowice");
         flightSearcher.searchByArrival("Gdansk");
         flightSearcher.searchDirectFlight("Warszawa", "Gdansk");
-        flightSearcher.searchFlightWithInterchange("Katowice", "Gdansk", "Warszawa");
+        flightSearcher.searchFlightWithInterchange("Katowice", "Gdansk");
     }
 }

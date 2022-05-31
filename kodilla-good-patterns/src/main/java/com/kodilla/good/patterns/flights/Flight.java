@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.flights;
 
 public class Flight {
 
-    private String departure;
-    private String arrival;
-    private int flightNumber;
+    private final String departure;
+    private final String arrival;
+    private final int flightNumber;
 
     public Flight(String departure, String arrival, int flightNumber) {
         this.departure = departure;

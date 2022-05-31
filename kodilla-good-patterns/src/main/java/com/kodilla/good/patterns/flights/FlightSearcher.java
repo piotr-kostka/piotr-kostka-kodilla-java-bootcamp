@@ -1,5 +1,6 @@
 package com.kodilla.good.patterns.flights;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,14 +24,20 @@ public class FlightSearcher {
                 .collect(Collectors.toList());
     }
 
-    public List<Flight> searchFlightWithInterchange(String departure, String arrival, String connectingAirport) {
-        List<Flight> flightList = FlightsRetriever.getListOfFlights().stream()
-                .filter(f -> f.getDeparture().equals(departure) && f.getArrival().equals(connectingAirport))
-                .collect(Collectors.toList());
+    public List<Flight> searchFlightWithInterchange(String departure, String arrival) {
+        List<Flight> departureAirports = searchByDeparture(departure);
+        List<Flight> arrivalAirports = searchByArrival(arrival);
 
-        flightList.addAll(FlightsRetriever.getListOfFlights().stream()
-                .filter(f -> f.getDeparture().equals(connectingAirport) && f.getArrival().equals(arrival))
-                .collect(Collectors.toList()));
-        return flightList;
+        List<Flight> result = new ArrayList<>();
+
+        for(Flight flight1 : departureAirports) {
+            for(Flight flight2 : arrivalAirports) {
+                if(flight1.getArrival().equals(flight2.getDeparture())) {
+                    result.add(flight1);
+                    result.add(flight2);
+                }
+            }
+        }
+        return result;
     }
 }
