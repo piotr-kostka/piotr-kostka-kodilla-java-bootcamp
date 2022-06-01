@@ -7,10 +7,16 @@ public class Application {
 
         FlightSearcher flightSearcher = new FlightSearcher();
 
-        flightSearcher.searchByDeparture("Katowice");
-        flightSearcher.searchByArrival("Gdansk");
-        flightSearcher.searchDirectFlight("Warszawa", "Gdansk");
-        List<InterchangeFlight> flights =  flightSearcher.searchFlightWithInterchange("Katowice", "Gdansk");
-        flights.forEach(p -> System.out.println(p.getFirst() + " *** " + p.getSecond()));
+        List<Flight> departureFlights = flightSearcher.searchByDeparture("Katowice");
+        departureFlights.forEach(System.out::println);
+
+        List<Flight> arrivalFlights = flightSearcher.searchByArrival("Gdansk");
+        arrivalFlights.forEach(System.out::println);
+
+        List<Flight> directFlights = flightSearcher.searchDirectFlight("Warszawa", "Gdansk");
+        directFlights.forEach(System.out::println);
+
+        List<InterchangeFlight> interchangeFlights =  flightSearcher.searchFlightWithInterchange("Katowice", "Gdansk");
+        interchangeFlights.forEach(p -> System.out.println(p.getFirst() + " *** " + p.getSecond()));
     }
 }
