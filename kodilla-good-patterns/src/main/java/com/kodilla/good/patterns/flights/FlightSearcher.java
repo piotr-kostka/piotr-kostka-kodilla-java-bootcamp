@@ -24,20 +24,20 @@ public class FlightSearcher {
                 .collect(Collectors.toList());
     }
 
-    public List<Flight> searchFlightWithInterchange(String departure, String arrival) {
+    public List<InterchangeFlight> searchFlightWithInterchange(String departure, String arrival) {
         List<Flight> departureAirports = searchByDeparture(departure);
         List<Flight> arrivalAirports = searchByArrival(arrival);
 
-        List<Flight> result = new ArrayList<>();
+        List<InterchangeFlight> result = new ArrayList<>();
 
         for(Flight flight1 : departureAirports) {
             for(Flight flight2 : arrivalAirports) {
                 if(flight1.getArrival().equals(flight2.getDeparture())) {
-                    result.add(flight1);
-                    result.add(flight2);
+                    result.add(new InterchangeFlight(flight1, flight2));
                 }
             }
         }
         return result;
     }
 }
+
