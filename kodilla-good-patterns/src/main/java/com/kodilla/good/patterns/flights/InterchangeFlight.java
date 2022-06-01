@@ -10,6 +10,14 @@ public class InterchangeFlight {
         this.second = second;
     }
 
+    public Flight getFirst() {
+        return first;
+    }
+
+    public Flight getSecond() {
+        return second;
+    }
+
     @Override
     public String toString() {
         return first + ", " + second;
