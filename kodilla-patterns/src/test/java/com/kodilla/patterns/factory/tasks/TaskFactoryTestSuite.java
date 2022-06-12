@@ -11,7 +11,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task shopping = factory.makeTask(TaskFactory.SHOPPING);
+        Task shopping = factory.makeTask(TaskFactory.SHOPPING, "Shopping", "bread", "2");
         boolean beforeExecuted = shopping.isTaskExecuted();
         shopping.executeTask();
         boolean afterExecuted = shopping.isTaskExecuted();
@@ -26,7 +26,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task painting = factory.makeTask(TaskFactory.PAINTING);
+        Task painting = factory.makeTask(TaskFactory.PAINTING, "Painting", "blue", "car");
         boolean beforeExecuted = painting.isTaskExecuted();
         painting.executeTask();
         boolean afterExecuted = painting.isTaskExecuted();
@@ -41,7 +41,7 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory factory = new TaskFactory();
         //When
-        Task driving = factory.makeTask(TaskFactory.DRIVING);
+        Task driving = factory.makeTask(TaskFactory.DRIVING, "Driving", "Hel", "car");
         boolean beforeExecuted = driving.isTaskExecuted();
         driving.executeTask();
         boolean afterExecuted = driving.isTaskExecuted();
