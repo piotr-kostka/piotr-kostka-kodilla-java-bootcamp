@@ -21,18 +21,15 @@ public class TaskList {
 
     @Id
     @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
+    @Column(unique = true)
     public int getId() {
         return id;
     }
 
-    @Column(name = "LISTNAME")
     public String getListName() {
         return listName;
     }
 
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
