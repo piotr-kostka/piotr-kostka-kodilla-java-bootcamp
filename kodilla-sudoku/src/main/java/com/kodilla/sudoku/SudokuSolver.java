@@ -44,10 +44,10 @@ public class SudokuSolver {
     }
 
     private boolean checkIfPossibleToFill(int x, int y, int value) {
-        return checkIfPossibleInLine(x, y, value) && possibleInElement(x, y, value);
+        return checkIfPossibleInLine(x, y, value) && checkIfPossibleInSection(x, y, value);
     }
 
-    private boolean possibleInElement(int x, int y, int value) {
+    private boolean checkIfPossibleInSection(int x, int y, int value) {
         int startX = x - x % 3;
         int startY = y - y % 3;
         for (int i = 0; i < 3; i++){

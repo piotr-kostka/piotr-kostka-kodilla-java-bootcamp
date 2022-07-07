@@ -17,11 +17,10 @@ public class SudokuGame {
 
     private void fillSudoku() {
         System.out.println(board);
-        List<String> inputList = UserService.getInputValue();
+        List<String> inputList = UserService.inputFirstValue();
         for(String input: inputList){
             board.addValue(Character.getNumericValue(input.charAt(0)), Character.getNumericValue(input.charAt(1))
                     ,Character.getNumericValue(input.charAt(2)));
-            System.out.println(board);
         }
         System.out.println(board);
     }
@@ -40,10 +39,6 @@ public class SudokuGame {
         }
         if (move == END_GAME) {
             end = true;
-        }
-        if (move == NEW_GAME) {
-            //todo
-
         }
     }
 }

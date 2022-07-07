@@ -9,7 +9,7 @@ import static com.kodilla.sudoku.UserChoice.*;
 public class UserService {
     private final static Scanner scanner = new Scanner(System.in);
 
-    public static List<String> getInputValue() {
+    public static List<String> inputFirstValue() {
         List<String> inputList = new ArrayList<>();
         System.out.println("WELCOME TO SUDOKU SOLVER");
         System.out.println("Please insert value in 'xyz' format, for example: 123" + "\nInfo: " +
@@ -38,15 +38,13 @@ public class UserService {
     }
 
     public static UserChoice setMove() {
-        System.out.println("What do you want to do? Write: SUDOKU - to solve game, N - to restart board, X - to close application");
+        System.out.println("What do you want to do? Write: SUDOKU - to solve game, X - to close application");
         String userChoose;
         while(true) {
             userChoose = scanner.nextLine().toUpperCase();
             switch (userChoose) {
                 case "SUDOKU":
                     return SUDOKU;
-                case "N":
-                    return NEW_GAME;
                 case "X":
                     return END_GAME;
                 default:
