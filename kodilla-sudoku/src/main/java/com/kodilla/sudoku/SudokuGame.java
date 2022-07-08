@@ -20,7 +20,7 @@ public class SudokuGame {
         List<String> inputList = UserService.inputFirstValue();
         for(String input: inputList){
             board.addValue(Character.getNumericValue(input.charAt(0)), Character.getNumericValue(input.charAt(1))
-                    ,Character.getNumericValue(input.charAt(2)));
+                    , Character.getNumericValue(input.charAt(2)));
         }
         System.out.println(board);
     }
@@ -39,6 +39,9 @@ public class SudokuGame {
         }
         if (move == END_GAME) {
             end = true;
+        }
+        if (move == NEW_GAME) {
+            board.createBoard();
         }
     }
 }

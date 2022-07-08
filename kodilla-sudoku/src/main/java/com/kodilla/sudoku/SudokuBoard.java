@@ -13,7 +13,7 @@ public class SudokuBoard extends Prototype {
             sudokuBoard.add(new SudokuRow());
         }
         for (SudokuRow row: sudokuBoard) {
-            row.getEmptyRow();
+            row.setEmptyRow();
         }
     }
 

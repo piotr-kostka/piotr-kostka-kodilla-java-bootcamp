@@ -38,7 +38,7 @@ public class UserService {
     }
 
     public static UserChoice setMove() {
-        System.out.println("What do you want to do? Write: SUDOKU - to solve game, X - to close application");
+        System.out.println("What do you want to do? Write: SUDOKU - to solve game, N - to restart application, X - to close application");
         String userChoose;
         while(true) {
             userChoose = scanner.nextLine().toUpperCase();
@@ -47,6 +47,8 @@ public class UserService {
                     return SUDOKU;
                 case "X":
                     return END_GAME;
+                case "N":
+                    return NEW_GAME;
                 default:
                     System.out.println(userChoose + " is WRONG choice! Please choose again");
                     break;
