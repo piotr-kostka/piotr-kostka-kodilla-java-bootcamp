@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -13,6 +16,9 @@ public class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -57,6 +63,56 @@ public class CompanyDaoTestSuite {
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
+        }
+    }
+
+    @Test
+    void testNamedQueryFindEmployeeByLastname() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        Employee adamSmith = new Employee("Adam", "Smith");
+
+        //When
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
+        employeeDao.save(adamSmith);
+
+        List<Employee> lastName = employeeDao.findEmployeeByLastname("Smith");
+
+        //Then
+        try {
+            assertEquals(2, lastName.size());
+        } finally {
+            //CleanUp
+            employeeDao.deleteAll();
+        }
+    }
+
+    @Test
+    void testNamedNativeQueryFindCompanyByFirst3Letters() {
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+        Company dataMatter = new Company("Data Matter");
+
+        //When
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+        companyDao.save(dataMatter);
+
+        List<Company> retrieveBy3letters = companyDao.findCompanyByFirst3Letters("dat");
+
+        //Then
+        try {
+            assertEquals(2, retrieveBy3letters.size());
+        } finally {
+            //CleanUp
+            companyDao.deleteAll();
         }
     }
 }
