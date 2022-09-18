@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,35 +22,39 @@ public class Facade {
     @Autowired
     private EmployeeDao employeeDao;
 
-    public void findCompany(final String nameFragment) throws FacadeException {
+    public List<Company> findCompany(final String nameFragment) throws FacadeException {
+        List<Company> foundCompanies = new ArrayList<>();
         boolean wasError = false;
         LOGGER.info("Searching company by fragment: " + nameFragment);
         List<Company> companies = companyDao.findCompanyByNameFragment("%" + nameFragment + "%");
         if (companies.size() > 0) {
             LOGGER.info("Companies found: ");
             for (Company company : companies) {
-                System.out.println(company.getName());
+                foundCompanies.add(company);
             }
         } else {
             LOGGER.error(FacadeException.ERR_NO_COMPANY);
             wasError = true;
             throw new FacadeException(FacadeException.ERR_NO_COMPANY);
         }
+        return foundCompanies;
     }
 
-    public void findEmployee(final String lastnameFragment) throws FacadeException {
+    public List<Employee> findEmployee(final String lastnameFragment) throws FacadeException {
+        List<Employee> foundEmployees = new ArrayList<>();
         boolean wasError = false;
         LOGGER.info("Searching employee by lastname fragment: " + lastnameFragment);
-        List<Employee> employees = employeeDao.findEmployeeByLastnameFragment("&" + lastnameFragment + "&");
+        List<Employee> employees = employeeDao.findEmployeeByLastnameFragment("%" + lastnameFragment + "%");
         if (employees.size() > 0) {
             LOGGER.info("Employees found: ");
             for (Employee employee : employees) {
-                System.out.println(employee.getLastname() + " " + employee.getFirstname());
+                foundEmployees.add(employee);
             }
         } else {
             LOGGER.error(FacadeException.ERR_NO_EMPLOYEE);
             wasError = true;
             throw new FacadeException(FacadeException.ERR_NO_EMPLOYEE);
         }
+        return foundEmployees;
     }
 }

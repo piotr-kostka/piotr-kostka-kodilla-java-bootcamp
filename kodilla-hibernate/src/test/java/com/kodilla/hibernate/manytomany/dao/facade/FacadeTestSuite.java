@@ -6,9 +6,14 @@ import com.kodilla.hibernate.manytomany.dao.CompanyDao;
 import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import com.kodilla.hibernate.manytomany.facade.Facade;
 import com.kodilla.hibernate.manytomany.facade.FacadeException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class FacadeTestSuite {
@@ -22,7 +27,7 @@ public class FacadeTestSuite {
     private EmployeeDao employeeDao;
 
     @Test
-    void facadeFindCompanyTest() {
+    void facadeFindCompanyTest() throws FacadeException {
         //Given
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
@@ -32,22 +37,18 @@ public class FacadeTestSuite {
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
-        try {
-            facade.findCompany("MATT");
-        } catch (FacadeException e) {
+        //When
+        List<Company> result = facade.findCompany("mat");
 
-        }
+        //Then
+        assertEquals(1, result.size());
 
         //CleanUp
-        try {
-            companyDao.deleteAll();
-        } catch (Exception e) {
-
-        }
+        companyDao.deleteAll();
     }
 
     @Test
-    void facadeFindEmployeeTest() {
+    void facadeFindEmployeeTest() throws FacadeException {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -57,17 +58,13 @@ public class FacadeTestSuite {
         employeeDao.save(stephanieClarckson);
         employeeDao.save(lindaKovalsky);
 
-        try {
-            facade.findEmployee("ova");
-        } catch (FacadeException e) {
+        //When
+        List<Employee> result = facade.findEmployee("cla");
 
-        }
+        //Then
+        assertEquals(1, result.size());
 
         //CleanUp
-        try {
-            employeeDao.deleteAll();
-        } catch (Exception e) {
-
-        }
+        employeeDao.deleteAll();
     }
 }
