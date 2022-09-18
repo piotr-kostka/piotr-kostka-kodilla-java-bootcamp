@@ -25,10 +25,8 @@ public class Facade {
     public List<Company> findCompany(final String nameFragment) throws FacadeException {
         List<Company> foundCompanies = new ArrayList<>();
         boolean wasError = false;
-        LOGGER.info("Searching company by fragment: " + nameFragment);
         List<Company> companies = companyDao.findCompanyByNameFragment("%" + nameFragment + "%");
         if (companies.size() > 0) {
-            LOGGER.info("Companies found: ");
             for (Company company : companies) {
                 foundCompanies.add(company);
             }
@@ -43,10 +41,8 @@ public class Facade {
     public List<Employee> findEmployee(final String lastnameFragment) throws FacadeException {
         List<Employee> foundEmployees = new ArrayList<>();
         boolean wasError = false;
-        LOGGER.info("Searching employee by lastname fragment: " + lastnameFragment);
         List<Employee> employees = employeeDao.findEmployeeByLastnameFragment("%" + lastnameFragment + "%");
         if (employees.size() > 0) {
-            LOGGER.info("Employees found: ");
             for (Employee employee : employees) {
                 foundEmployees.add(employee);
             }
