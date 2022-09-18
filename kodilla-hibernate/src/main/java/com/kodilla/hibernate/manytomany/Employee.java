@@ -11,7 +11,7 @@ import java.util.List;
 )
 @NamedNativeQuery(
         name = "Employee.findEmployeeByLastnameFragment",
-        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE CONCAT('%', :ARG , '%')",
+        query = "SELECT * FROM EMPLOYEES WHERE LASTNAME LIKE CONCAT('%', :FRAGMENT , '%')",
         resultClass = Employee.class
 )
 @Entity

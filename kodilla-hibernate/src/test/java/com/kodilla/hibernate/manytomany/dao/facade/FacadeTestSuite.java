@@ -22,37 +22,40 @@ public class FacadeTestSuite {
     private EmployeeDao employeeDao;
 
     @Test
-    void facadeTestSuite() {
+    void facadeFindCompanyTest() {
         //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
-
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
         Company greyMatter = new Company("Grey Matter");
-
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
-
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
         try {
-            facade.findCompany("mac");
+            facade.findCompany("MATT");
         } catch (FacadeException e) {
 
         }
+
+        //CleanUp
+        try {
+            companyDao.deleteAll();
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Test
+    void facadeFindEmployeeTest() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
 
         try {
             facade.findEmployee("ova");
@@ -62,7 +65,6 @@ public class FacadeTestSuite {
 
         //CleanUp
         try {
-            companyDao.deleteAll();
             employeeDao.deleteAll();
         } catch (Exception e) {
 
