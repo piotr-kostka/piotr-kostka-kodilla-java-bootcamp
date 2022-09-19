@@ -23,34 +23,26 @@ public class Facade {
     private EmployeeDao employeeDao;
 
     public List<Company> findCompany(final String nameFragment) throws FacadeException {
-        List<Company> foundCompanies = new ArrayList<>();
         boolean wasError = false;
         List<Company> companies = companyDao.findCompanyByNameFragment("%" + nameFragment + "%");
         if (companies.size() > 0) {
-            for (Company company : companies) {
-                foundCompanies.add(company);
-            }
+            return companies;
         } else {
             LOGGER.error(FacadeException.ERR_NO_COMPANY);
             wasError = true;
             throw new FacadeException(FacadeException.ERR_NO_COMPANY);
         }
-        return foundCompanies;
     }
 
     public List<Employee> findEmployee(final String lastnameFragment) throws FacadeException {
-        List<Employee> foundEmployees = new ArrayList<>();
         boolean wasError = false;
         List<Employee> employees = employeeDao.findEmployeeByLastnameFragment("%" + lastnameFragment + "%");
         if (employees.size() > 0) {
-            for (Employee employee : employees) {
-                foundEmployees.add(employee);
-            }
+            return employees;
         } else {
             LOGGER.error(FacadeException.ERR_NO_EMPLOYEE);
             wasError = true;
             throw new FacadeException(FacadeException.ERR_NO_EMPLOYEE);
         }
-        return foundEmployees;
     }
 }
