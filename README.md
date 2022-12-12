@@ -45,7 +45,7 @@ Repository contains solutions to exercises from Kodilla bootcamp. Exercises are 
 - try-catch, try-catch-finally
 - throws and throw
 
-###### _===>> Weeks 9 - 12 are about creating Tic Tac Toe App. Code of app is based in separate [repository.](https://github.com/piotr-kostka/kodilla-tictactoe)
+###### _===>> Weeks 9 - 12 are about creating Tic Tac Toe App. Code of app is based in separate [repository.](https://github.com/piotr-kostka/kodilla-tictactoe)_
 
 
 ##### [Week 13. Good patterns](https://github.com/piotr-kostka/piotr-kostka-kodilla-java-bootcamp/tree/master/kodilla-good-patterns) 
